@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="content">
+{% block content_title %}
+<h2>All articles</h2>
+{% endblock %}
+
+{% for article in articles_page.object_list %}
+
+    <section>
+    <h3 class="post-title">
+    <a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a>
+    <span class="separator"> &middot; </span>{{ article.date|strftime('%b %d %Y') }}
+    <span class="taglist">
+        {% for tag in article.tags %}
+            <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag.name }}</a>
+        {% endfor %}
+    </span>
+    </h3>
+    </section>
+
+{% endfor %}
+{% if articles_page.has_other_pages() %}
+    {% include 'pagination.html' %}
+{% endif %}
+</section><!-- /#content -->
+{% endblock %}

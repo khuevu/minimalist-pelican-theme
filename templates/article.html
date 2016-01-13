@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<article class="post-article">
+    <div class="post-stamp">
+    {{ article.date|strftime('%B %d %Y')}}
+    <span class="taglist">
+        {% for tag in article.tags %}
+            <a href="{{ SITEURL }}/{{ tag.url }}"> &middot; {{ tag.name }}</a>
+        {% endfor %}
+    </span>
+    </div>
+
+    <h1 class="post-title">{{ article.title }}</h1>
+    {{ article.content }}
+    {% include 'share.html' %}
+    {% include 'comments.html' %}
+</article> 
+
+{% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/rrssb.css">
+<meta property="og:title" content="{{ article.title }}" />
+<meta property="og:type" content="{{ article.category }}" />
+<meta property="og:description" content="{{ article.summary }}..."/>
+{% endblock head %}
