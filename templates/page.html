@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<article class="post-article">
+
+    <h1 class="post-title">{{ page.title }}</h1>
+    {{ page.content }}
+</article> 
+
+{% endblock content %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/rrssb.css">
+<meta property="og:title" content="{{ page.title }}" />
+{% endblock head %}

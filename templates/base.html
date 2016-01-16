@@ -63,6 +63,18 @@
                 <a href="{{ url }}"><i class="fa fa-{{ social }}-square fa-2x"></i></a>
                 {% endfor %}
             </div>         
+
+            {% if DISPLAY_PAGES_ON_MENU %}
+            {% for p in pages %}
+            <h6><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></h6>
+            {% endfor %}
+            {% else %}
+              {% if DISPLAY_CATEGORIES_ON_MENU %}
+                {% for cat, null in categories %}
+                  <h6{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></h6>
+                {% endfor %}
+              {% endif %}
+            {% endif %}
         </header>
         <main id="content">
             {% block content %}

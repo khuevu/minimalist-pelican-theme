@@ -16,11 +16,10 @@
     {% include 'comments.html' %}
 </article> 
 
-{% endblock %}
+{% endblock content %}
 {% block head %}
 {{ super() }}
 <link rel="stylesheet" type="text/css" href="{{ SITEURL }}/theme/css/rrssb.css">
 <meta property="og:title" content="{{ article.title }}" />
 <meta property="og:type" content="{{ article.category }}" />
-<meta property="og:description" content="{{ article.summary }}..."/>
 {% endblock head %}
